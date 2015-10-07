@@ -1,7 +1,10 @@
 0.  How much time did you spend on this pre-class exercise, and when?
+Ans. I spent 1 hour on pre-class exercise on October 7, 2015. 
 
 1.  What are one or two points that you found least clear in the
     10/06 slide decks (including the narration)?
+Ans. One point that I did not understand is the giving up of one-hop routing
+     while explaining the difference between Bus and Crossbar network topology.
 
 2.  In the upcoming lecture (10/8), we will discuss how to model
     latency and bandwidth of MPI sends and receives using the
@@ -13,6 +16,10 @@
        if everything is correct, you should see the Intel MPI version
        (under /usr/local/intel).  Using this version of MPI and the
        default PBS files, run the pingpong examples (demo/pingpong).
+    Ans. After loading the cs5220 module, I run all the default pbs 
+        files in the pingpong folder. We find that the ping-2core is faster
+	than ping-2chip.    
+
 
     b) Now do "module load openmpi/1.10.0-icc-15.0.3" after loading
        the CS 5220 module.  Check by typing "which mpicc" that you
@@ -20,8 +27,16 @@
        OpenMPI, and re-run the on-node tests using OpenMPI (note:
        you will have to add a module load to the start of the PBS
        scripts).  How do the timings differ from the Intel MPI timings?
+   Ans. ping-2core using openmpi is faster than ping-2core using intel mpi 
+        for small sized messages but as the message size increases, the trend 
+        gets reversed. A similar behavior is seen using the chip communication 
+        for small sizes messages. For larger messages, "openmpi" ping-2chip is 
+	comparable to "intel-mpi" ping-2chip.   
 
     c) When running at the peak rate (e.g. 16 double precision
        flops/cycle), how many (double precision) floating point ops
        could two totient cores do in the minimal time required for one
        MPI message exchange?
+    Ans. The minimal time required for one MPI message exchange is approimately 
+         2e-07. The total number of FLOPS for two totient cores will be = 2*2.4e9*
+         16*2e-07 = 15360. 
